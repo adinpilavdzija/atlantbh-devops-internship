@@ -1,0 +1,50 @@
+version: '3'
+services:
+  petclinic-postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_PASSWORD: petclinic
+      POSTGRES_DB: petclinic
+    ports:
+      - "5432:5432"
+    networks:
+      - petclinic-network
+    volumes:
+      - psql-db:/var/lib/postgresql/data
+    container_name: petclinic-postgres
+
+  petclinic-rest:
+    build:
+      context: ./spring-petclinic-rest/
+      dockerfile: Dockerfile
+    image: petclinic-rest
+    depends_on:
+      - petclinic-postgres
+    environment: 
+      POSTGRES_JDBC_URL: jdbc:postgresql://petclinic-postgres:5432/petclinic
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: petclinic
+    ports:
+      - "9966:9966"
+    networks:
+      - petclinic-network
+    container_name: petclinic-rest
+
+  petclinic-angular:
+    build:
+      context: ./spring-petclinic-angular/
+      dockerfile: Dockerfile
+    image: petclinic-angular
+    depends_on:
+      - petclinic-rest
+    ports:
+      - "4200:80"
+    networks:
+      - petclinic-network
+    container_name: petclinic-angular
+
+networks:
+  petclinic-network: 
+
+volumes:
+  psql-db:
