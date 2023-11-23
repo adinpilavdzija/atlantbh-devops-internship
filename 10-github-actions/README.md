@@ -32,7 +32,7 @@ Task:
 
 ## GitHub Actions
 
-<p align="right">
+<p align="center">
     <img src="../resources/github_actions_logo.png"/>
 </p>
 
