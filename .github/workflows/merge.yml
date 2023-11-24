@@ -1,14 +1,12 @@
 name: Build and Push Docker Images on Develop Merge
 
 on:
-  pull_request:
-    types: closed
+  push:
     branches: 
       - develop
 
 jobs:
   backend:
-    if: github.event.pull_request.merged == true
     name: Backend Build and Push Image
     runs-on: self-hosted
     defaults:
@@ -35,7 +33,6 @@ jobs:
             ${{ secrets.DOCKER_USERNAME }}/spring-petclinic-rest:latest
 
   frontend:
-    if: github.event.pull_request.merged == true
     name: Frontend Build and Push Image
     needs: backend
     runs-on: self-hosted
