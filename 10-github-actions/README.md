@@ -3,10 +3,10 @@
 ## Task
 
 Task: 
-- GitHub Actions on Pull Request -> [pull_request.yml](../.github/workflows/pull_request.yml)
+- GitHub Actions on Pull Request -> [pull_request.yml](../.github/workflows/pull_request.yml), [in-depth explanation](#workflow-for-github-actions---pull-request-subtask)
   - Trigger on each Pull Request on develop branch
   - Validate the build is successfull
-- GitHub Actions on merge -> [merge.yml](../.github/workflows/merge.yml)
+- GitHub Actions on merge -> [merge.yml](../.github/workflows/merge.yml), [in-depth explanation](#workflow-for-github-actions---merge-subtask)
   - Local GitHub runner
   - Build applications
   - Build docker images with appropriate tags
@@ -32,7 +32,7 @@ Task:
 
 ## GitHub Actions
 
-<p align="center">
+<p align="right">
     <img src="../resources/github_actions_logo.png"/>
 </p>
 
@@ -150,14 +150,16 @@ Steps to add a self-hosted runner: `(Repo's) Settings -> Actions -> Runners -> N
 
 ### Workflow for Github Actions - Merge Subtask
 
-Before merging a branch into the develop branch, it's necessary to perform a Docker login on the local machine. 
+> [!IMPORTANT]
+> Before merging a branch into the develop branch, it's necessary to perform a Docker login on the local machine. 
 
-<details>
-<summary>`merge.yml` file with in-depth explanation:</summary>
+- First solution: use `closed` type of `pull_request` event trigger and `if merged` condition
+- Second solution: use `push` event trigger in combination with `Branch protection rule "Require a pull request before merging"` (already in use)
 
+While the first solution triggers the GitHub action upon the closure of a pull request, even if it remains unmerged which is resulting in skipped jobs, the second solution only activates the GitHub action when the pull request is successfully merged.
+
+An example showcasing the use of the first solution:
 ```yml
-name: Build and Push Docker Images on Develop Merge
-
 # Specifies the trigger for this workflow. This example uses the `closed` type of the `pull_request` event to the `develop` branch. It is used in combination with `if: github.event.pull_request.merged == true` down below, so only successfully merged pull request trigger this workflow.
 on:
   pull_request:
@@ -169,6 +171,22 @@ jobs:
   backend:
     # This condition checks if the pull request has been merged. The rest of the job will execute only if this condition evaluates to true.
     if: github.event.pull_request.merged == true
+```
+
+<details>
+<summary>`merge.yml` file with in-depth explanation:</summary>
+
+```yml
+name: Build and Push Docker Images on Develop Merge
+
+# Specifies the trigger for this workflow. This example uses the `push` event to the `develop` branch. It is used in combination with `Branch protection rule "Require a pull request before merging"`, so only successfully merged pull request trigger this workflow (without direct commits to the `develop` branch).
+on:
+  push:
+    branches: 
+      - develop
+
+jobs:
+  backend:
     name: Backend Build and Push Image
     # Indicates that the workflow will execute on infrastructure managed and hosted by the user rather than on GitHub's servers. This allows for custom hardware configurations, specific software setups, or enhanced security measures tailored to individual needs.
     runs-on: self-hosted
@@ -200,7 +218,6 @@ jobs:
             ${{ secrets.DOCKER_USERNAME }}/spring-petclinic-rest:latest
 
   frontend:
-    if: github.event.pull_request.merged == true
     name: Frontend Build and Push Image
     # This line specifies a dependency relationship within a GitHub Actions workflow. The current job requires that another job named 'backend' has completed before it can start.
     needs: backend
