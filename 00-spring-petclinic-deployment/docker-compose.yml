@@ -44,7 +44,8 @@ services:
     container_name: petclinic-angular
 
 networks:
-  petclinic-network: 
+  petclinic-network:
+    name: petclinic-network
 
 volumes:
   psql-db:

@@ -15,11 +15,18 @@ Task:
 
 <details>
 <summary>Screenshots of task completion</summary>
-	
+
+Images:
 ![1](screenshots/01_images.png)
+
+Containers:
 ![2](screenshots/02_containers.png)
+
+Network:
 ![3](screenshots/03_network.png)
 ![4](screenshots/04_network_inspect.png)
+
+Volume:
 ![5](screenshots/05_volume.png)
 ![6](screenshots/06_volume_inspect.png)
 </details>
@@ -110,7 +117,7 @@ docker run -d -p 5432:5432 --network petclinic-network -v psql-db:/var/lib/postg
 
 ## Create Database Dockerfile and build docker image <a name="database"></a>
 
-[Database Dockerfile](../postgres/Dockerfile) 
+[Database Dockerfile](/00-spring-petclinic-deployment/postgres/Dockerfile) 
 
 Use following commands to build image and run container:
 ```
@@ -124,11 +131,18 @@ $ docker run -d -p 5432:5432 --network petclinic-network -v psql-db:/var/lib/pos
 
 ## Create Backend Dockerfile and build docker image <a name="backend"></a>
 
+[Backend Dockerfile](../00-spring-petclinic-deployment/spring-petclinic-rest/Dockerfile)
+
 Update the `datasource.url` in `application.properties` file or `.env` file. We can find container's IPV4 address with `docker inspect network-name`. Instead of `localhost`, use IPv4 address or hostname of the database container:
 `spring.datasource.url=jdbc:postgresql://localhost:5432/petclinic`
 `spring.datasource.url=jdbc:postgresql://172.18.0.2:5432/petclinic`
 
-[Backend Dockerfile](../spring-petclinic-rest/Dockerfile)
+The location of a `.jar` file can vary, but it's often found in the project's `target` directory: `/target/spring-petclinic-rest-3.0.2.jar`. Another location (`/Users/user/.m2/repository/org/springframework/samples/spring-petclinic-rest/3.0.2/spring-petclinic-rest-3.0.2.jar`) can be found in `pom.xml` file with name and version in adition:
+```xml
+<groupId>org.springframework.samples</groupId>
+<artifactId>spring-petclinic-rest</artifactId>
+<version>3.0.2</version>
+```
 
 <details>
 <summary>Error</summary>
@@ -170,7 +184,7 @@ Size comparison of docker images based on image used in second stage of [Backend
 
 ## Create Frontend Dockerfile and build docker image <a name="frontend"></a>
 
-[Frontend Dockerfile](../spring-petclinic-angular/Dockerfile)
+[Frontend Dockerfile](/00-spring-petclinic-deployment/spring-petclinic-angular/Dockerfile)
 
 > [!TIP]
 > When copying multiple files, it is recommended to reference destination as directory like `./` instead of just `.`. `.` represents current directory iteself, while `./` represents current directory as part of a file path.

@@ -50,8 +50,7 @@ Change value for property `ddl-auto` from `none` to `update`:
 spring.jpa.hibernate.ddl-auto=update
 ```
 
-<details>
-<summary>ddl-auto property</summary>
+### ddl-auto property
 
 The ddl-auto property sets the behavior of Hibernate’s schema generation tool and has five possible values:
 - `create` – On application start-up, drop all tables managed by Hibernate, - then create them from scratch.
@@ -59,8 +58,6 @@ The ddl-auto property sets the behavior of Hibernate’s schema generation tool 
 - `update` – On application start-up, update the existing tables to match the schema Hibernate expects if necessary.
 - `validate` – On application start-up, check that the existing tables match the schema Hibernate expects, and throw an exception if they do not match.
 - `none` – Do not perform any automatic schema management.
-</details>
-<br>
 
 ## Screenshots 
 
