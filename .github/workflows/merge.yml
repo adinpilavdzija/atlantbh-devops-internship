@@ -22,7 +22,14 @@ jobs:
       - name: Git Short Commit SHA Extraction
         id: sha_step
         run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-          
+
+      - name: Docker Login
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          logout: false
+
       - name: Build and push Docker images
         uses: docker/build-push-action@v5
         with:

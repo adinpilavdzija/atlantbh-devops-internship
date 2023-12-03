@@ -8,17 +8,22 @@ During `ABH Internship`, interns work on a project with one-on-one mentorship fr
 
 The repository encompasses this main `README.md` file offering essential guidance, individual task folders with their corresponding `README.md` files and, optionally,  screenshots or other files. Each `README.md` file within the task folders provides overview and comprehensive instructions for completing the associated task. Additionally, repository includes the main application located in `00-spring-petclinic-deployment` directory.
 
-<img name="devops-forthebadge" src="https://github.com/adinpilavdzija/devops-internship-atlantbh/assets/65655945/41e74e48-5c09-4a4a-9be8-3cc3f34383f8" align="right" />
+<img name="devops-forthebadge" src="https://github.com/adinpilavdzija/devops-internship-atlantbh/assets/65655945/41e74e48-5c09-4a4a-9be8-3cc3f34383f8" align="right"/>
 
 > MacOS: Ventura 13.3  
 > Start date: October 9, 2023  
 > End date: 🔴
 
 <p align="left">
-    <img src="https://skillicons.dev/icons?i=git,github,bash,vim,vscode,java,maven,angular,postgres,docker"/>
+    <img src="https://skillicons.dev/icons?i=git,github,md,linux,bash,vim,vscode,java,maven,angular,postgres,docker,githubactions,nginx"/>
 </p>
 
-## Table of contents
+## Further insight
+
+<details>
+  <summary></summary>
+
+### Table of contents
 
 Table of contents has been removed due to built-in support on GitHub. Markdown files now automatically generate a table of contents in the header when there are 2 or more headings. The table of contents is interactive and links to the selected section. All 6 Markdown heading levels are supported.
 
@@ -28,15 +33,15 @@ Table of contents has been removed due to built-in support on GitHub. Markdown f
   ![Table of contents - gif](https://i0.wp.com/user-images.githubusercontent.com/7900087/113821370-df915480-9730-11eb-8aed-bdc50e2212d5.gif?ssl=1)
 </details>
 
-## Further insight
-
 ### Trello
 
 **[Trello](https://trello.com) is a project management tool that is used for this internship.** It is a popular, simple, and easy-to-use collaboration tool that enables organizing projects and everything related to them into boards. 
 
 ### Gitflow workflow
 
-**The internship adopts the [Gitflow workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).** Instead of a single main branch, this workflow uses two branches to record the history of the project. The `main` branch stores the official release history, and the `develop` branch serves as an integration branch for features. `Feature` branches are generally created off to the latest `develop` branch and they should reside in its own branch. **Additionally, at the end of each month, the `develop` branch is merged into the `main` branch.**
+<img name="git_feature_branch_workflow.png" src="/resources/git_feature_branch_workflow.png"/>
+
+**The internship adopts the [Git Feature Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow).** The `develop` branch functions as an integration branch for features. For each new task, a `feature` branch is created from the latest `develop` branch. The `main` branch stores the official release history, and at the end of every month, the changes from the `develop` branch are merged into the `main` branch.
 
 ### Homebrew
 
@@ -49,6 +54,7 @@ $ brew doctor #to run diagnostics
 $ brew upgrade #to upgrade packages
 $ brew list #to see a list of all the packages you've installed
 ```
+</details>
 
 ## [spring-petclinic-deployment](/00-spring-petclinic-deployment/)
 
@@ -137,19 +143,25 @@ Task: Create docker-compose file for spring petclinic app.
 <details>
   <summary></summary>
 
-### [10 Create GitHub Actions trigger](🔴)
+### [10 Create GitHub Actions trigger](/10-github-actions/)
 
 Task:
-
 - GitHub Actions on Pull Request
   - Trigger on each Pull Request on develop branch
   - Validate the build is successfull
 - GitHub Actions on merge
+  - Local GitHub runner
   - Build applications
   - Build docker images with appropriate tags
-  - [may need local gh runner] Deploy docker-compose 🔴
+  - Deploy docker-compose
 
-### 11 🔴
+### 11 [Migrate local docker-compose to internship server](/11-migration-to-server)🔴
+
+Task: 
+- Deploy docker-compose on internship server
+- Deploy nginx reverse proxy
+- Configure nginx to route requests to docker containers (e.g. `frontend.praksa.abhapp.com` to `frontend` docker container)
+- Add SSL certificates (letsencrypt)
 
 </details>
 

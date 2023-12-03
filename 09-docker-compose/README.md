@@ -2,7 +2,7 @@
 
 ## Task
 
-Task: Create docker-compose file for spring petclinic app -> [docker-compose.yml](../docker-compose.yml)
+Task: Create docker-compose file for spring petclinic app -> [docker-compose.yml](/00-spring-petclinic-deployment/docker-compose.yml)
 
 ## Resources
 

@@ -32,7 +32,7 @@ Task:
 
 ## GitHub Actions
 
-<p align="right">
+<p align="center">
     <img src="../resources/github_actions_logo.png"/>
 </p>
 
@@ -140,7 +140,7 @@ jobs:
 
 ### Secrets
 
-`merge.yml` workflow uses Github Actions secrets. Secrets are variables that you create in an organization, repository, or repository environment. The secrets that you create are available to use in GitHub Actions workflows. GitHub Actions can only read a secret if you explicitly include the secret in a workflow.  
+`merge.yml` workflow uses Github Actions secrets (`secrets.DOCKER_USERNAME` and `secrets.DOCKER_USERNAME`). Secrets are variables that you create in an organization, repository, or repository environment. The secrets that you create are available to use in GitHub Actions workflows. GitHub Actions can only read a secret if you explicitly include the secret in a workflow.  
 Steps to add a secret: `(Repo's) Settings -> Security -> Secrets and variables -> Actions -> Secrets tab -> New repository secret -> Name field: type a name for your secret -> Secret field: enter the value for your secret -> Add secret`.
 
 ### Self-hosted runner
@@ -149,9 +149,6 @@ A self-hosted runner is a system that you deploy and manage to execute jobs from
 Steps to add a self-hosted runner: `(Repo's) Settings -> Actions -> Runners -> New self-hosted runner -> Choose Runner image and architecture -> Execute commands for download -> Execute commands for configure -> Use your self-hosted runner in a YAML workflow file`.
 
 ### Workflow for Github Actions - Merge Subtask
-
-> [!IMPORTANT]
-> Before merging a branch into the develop branch, it's necessary to perform a Docker login on the local machine. 
 
 - First solution: use `closed` type of `pull_request` event trigger and `if merged` condition
 - Second solution: use `push` event trigger in combination with `Branch protection rule "Require a pull request before merging"` (already in use)
