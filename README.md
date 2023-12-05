@@ -1,7 +1,7 @@
 <h1 align="center">Atlantbh DevOps Internship</h1>
 
 <p align="center">
-  <img width="450" height="232" src="/resources/atlantbh_devops_logo.png">
+  <img width="500" src="/resources/atlantbh_devops_logo.png">
 </p>
 
 During `ABH Internship`, interns work on a project with one-on-one mentorship from an Atlantbh engineer. The DevOps Engineer intern will work on raising the application quality as well as the development of tools and practices needed for the successful release of your application to production. By the end of the internship, the intern will be acquainted with the tools necessary for setting up and managing Continuous Integration and automated deployment processes (bash scripting/Docker/Kubernetes/GitHub Actions), as well as cloud computing infrastructure management (Amazon Web Services).
@@ -155,7 +155,7 @@ Task:
   - Build docker images with appropriate tags
   - Deploy docker-compose
 
-### 11 [Migrate local docker-compose to internship server](/11-migration-to-server)🔴
+### [11 Migrate local docker-compose to internship server](/11-docker-compose-to-server)
 
 Task: 
 - Deploy docker-compose on internship server
