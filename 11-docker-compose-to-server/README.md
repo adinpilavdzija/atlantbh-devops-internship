@@ -58,7 +58,7 @@ Instead of typing: `ssh -i ~/.ssh/<private.key> -p 22 adin@<IP_address>`, just t
 ## NGINX
 
 <p align="center">
-    <img name="nginx" src="/resources/nginx.png">
+    <img width="500" name="nginx" src=/resources/nginx_logo"">
 </p>
 
 NGINX is open source software for web serving, reverse proxying, caching, load balancing, media streaming, and more. It started out as a web server designed for maximum performance and stability. In addition to its HTTP server capabilities, NGINX can also function as a proxy server for email (IMAP, POP3, and SMTP) and a reverse proxy and load balancer for HTTP, TCP, and UDP servers.
@@ -234,7 +234,13 @@ $ sudo ln -s /etc/nginx/sites-available/backend.praksa.abhapp.com /etc/nginx/sit
 $ sudo systemctl reload nginx
 ```
 
-Take a look at the domains: [frontend.praksa.abhapp.com](frontend.praksa.abhapp.com) and [backend.praksa.abhapp.com](backend.praksa.abhapp.com), as well as the Nginx configuration files: [frontend.praksa.abhapp.com](/00-spring-petclinic-deployment/nginx/frontend.praksa.abhapp.com) and [backend.praksa.abhapp.com](/00-spring-petclinic-deployment/nginx/backend.praksa.abhapp.com).
+Take a look at ...
+- the domains:
+  - [frontend.praksa.abhapp.com](https://frontend.praksa.abhapp.com)
+  - [backend.praksa.abhapp.com](https://backend.praksa.abhapp.com)
+- as well as the Nginx configuration files:
+  - [frontend.praksa.abhapp.com](/00-spring-petclinic-deployment/nginx/frontend.praksa.abhapp.com)
+  - [backend.praksa.abhapp.com](/00-spring-petclinic-deployment/nginx/backend.praksa.abhapp.com)
 
 ## SSL, TLS, HTTPS
 
@@ -246,7 +252,7 @@ Take a look at the domains: [frontend.praksa.abhapp.com](frontend.praksa.abhapp.
 ## Let's Encrypt
 
 <p align="center">
-    <img name="Let's encrypt" src="/resources/lets_encrypt.png">
+    <img width="500" name="Let's encrypt" src="/resources/lets_encrypt.png">
 </p>
 
 Web servers obtain their certificates from trusted third parties called **certificate authorities (CAs)**.
@@ -287,13 +293,13 @@ Certbot automatically adjusts the Nginx configuration files, incorporating the n
 <details>
 <summary>Screenshots of certificates:</summary>
 
-<img name="frontend" src="/resources/screenshoot_certificate_frontend.png">
-<img name="backend" src="/resources/screenshoot_certificate_frontend.png">
+<img name="frontend" src="screenshot_certificate_frontend.png">
+<img name="backend" src="screenshot_certificate_backend.png">
 </details>
 
 ## Update `REST_API_URL` to use `https`
 
-Error: `Mixed Content: The page at 'https://frontend.praksa.abhapp.com/petclinic/pettypes' was loaded over HTTPS, but requested an insecure XMLHttpRequest endpoint 'http://frontend.praksa.abhapp.com/petclinic/pettypes'. This request has been blocked; the content must be served over HTTPS.`
+Error: *Mixed Content: The page at 'https://frontend.praksa.abhapp.com/petclinic/pettypes' was loaded over HTTPS, but requested an insecure XMLHttpRequest endpoint 'http://frontend.praksa.abhapp.com/petclinic/pettypes'. This request has been blocked; the content must be served over HTTPS.*
 
 Update `REST_API_URL` to use `https` instead of `http`:
 ```typescript
