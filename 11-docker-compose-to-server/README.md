@@ -290,8 +290,9 @@ The `--nginx` flag specifies that Certbot should use the Nginx plugin for the ce
 
 Certbot automatically adjusts the Nginx configuration files, incorporating the necessary modifications to enable HTTPS.
 
+### Screenshots of certificates
 <details>
-<summary>Screenshots of certificates:</summary>
+<summary></summary>
 
 <img name="frontend" src="screenshot_certificate_frontend.png">
 <img name="backend" src="screenshot_certificate_backend.png">
