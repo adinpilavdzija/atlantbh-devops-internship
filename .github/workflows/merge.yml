@@ -70,4 +70,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Docker Compose
-        run: docker compose -f ./00-spring-petclinic-deployment/docker-compose.yml up -d
+        run: docker compose -f ./00-spring-petclinic-deployment/docker-compose.yml up -d --build
