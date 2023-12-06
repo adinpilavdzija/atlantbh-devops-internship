@@ -17,7 +17,7 @@ services:
     build:
       context: ./spring-petclinic-rest/
       dockerfile: Dockerfile
-    image: petclinic-rest
+    image: adinpilavdzija/spring-petclinic-rest:latest
     depends_on:
       - petclinic-postgres
     environment: 
@@ -34,7 +34,7 @@ services:
     build:
       context: ./spring-petclinic-angular/
       dockerfile: Dockerfile
-    image: petclinic-angular
+    image: adinpilavdzija/spring-petclinic-angular:latest
     depends_on:
       - petclinic-rest
     ports:
