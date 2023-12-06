@@ -12,7 +12,7 @@ Deploying a GitHub Actions self-hosted runner onto our internship server will au
 
 We need to implement specific modification within the [`merge.yml`](/.github/workflows/merge.yml) file. Within the `docker-compose` job, incorporate the `--build` option into the command: `docker compose -f ./00-spring-petclinic-deployment/docker-compose.yml up -d`. The `--build` option is used to build or rebuild the services defined in a `docker-compose.yml` file. It ensures that any changes made to the Dockerfiles or build context of the services are applied when the containers are created. By doing so, we utilize the latest code version while keeping other containers unchanged if they haven't been altered.
 
-```yml
+```
 docker compose -f ./00-spring-petclinic-deployment/docker-compose.yml up -d --build
 ```
 
