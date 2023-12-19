@@ -300,7 +300,7 @@ Certbot automatically adjusts the Nginx configuration files, incorporating the n
 
 ## Update `REST_API_URL` to use `https`
 
-Error: *Mixed Content: The page at 'https://frontend.praksa.abhapp.com/petclinic/pettypes' was loaded over HTTPS, but requested an insecure XMLHttpRequest endpoint 'http://frontend.praksa.abhapp.com/petclinic/pettypes'. This request has been blocked; the content must be served over HTTPS.*
+Error: *Mixed Content: The page at 'https://frontend.praksa.abhapp.com/petclinic/pettypes' was loaded over HTTPS, but requested an insecure XMLHttpRequest endpoint 'http://backend.praksa.abhapp.com/petclinic/pettypes'. This request has been blocked; the content must be served over HTTPS.*
 
 Update `REST_API_URL` to use `https` instead of `http`:
 ```typescript
