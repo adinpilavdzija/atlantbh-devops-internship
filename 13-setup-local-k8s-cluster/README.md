@@ -48,7 +48,7 @@ Explore different kubectl commands for a deeper understanding of its capabilitie
 ## Kubernetes 
 
 <p align="center">
-    <img width="" name="k8s logo" src="/resources/k8s_logo.png">
+    <img width="600" name="k8s logo" src="/resources/k8s_logo.png">
 </p>
 
 Kubernetes (K8s) is an open-source system for automating deployment, scaling, and management of containerized applications. With the widespread adoption of containers among organizations, Kubernetes, the container-centric management software, has become the de facto standard to deploy and operate containerized applications. 
@@ -67,7 +67,7 @@ Scalability and Performance: Adapting to varying loads, Kubernetes optimizes sca
 
 ## Kubernetes vs. Docker
 
-Often misunderstood as a choice between one or the other, Kubernetes and Docker are different yet complementary technologies for running containerized applications. Docker lets you put everything you need to run your application into a box that can be stored and opened when and where it is required. Once you start boxing up your applications, you need a way to manage them; and that's what Kubernetes does. Kubernetes is a Greek word meaning  ‘captain’ in English. Like the captain is responsible for the safe journey of the ship in the seas, Kubernetes is responsible for carrying and delivering those boxes safely to locations where they can be used. Kubernetes can be used with or without Docker.
+Often misunderstood as a choice between one or the other, Kubernetes and Docker are different yet complementary technologies for running containerized applications. Docker lets you put everything you need to run your application into a box that can be stored and opened when and where it is required. Once you start boxing up your applications, you need a way to manage them and that's what Kubernetes does. Kubernetes is a Greek word meaning ‘captain’ in English. Like the captain is responsible for the safe journey of the ship in the seas, Kubernetes is responsible for carrying and delivering those boxes safely to locations where they can be used. Kubernetes can be used with or without Docker.
 
 ## Kubernetes Architecture
 
@@ -75,16 +75,16 @@ Often misunderstood as a choice between one or the other, Kubernetes and Docker 
     <img width="" name="k8s architecture" src="/resources/k8s_architecture.png">
 </p>
 
-- Pod is the basic component or the smallest deployable unit of Kubernetes. Pod is an abstraction over a container that simplifies container management within Kubernetes, without direct work with Docker or another used container technology. It encapsulates one or more containers, allowing them to share resources and network connections. Pod is usually meant to run one application container inside of it, but it can run multiple containers inside one Pod which is usually the case if you have one main application container and a helper container or some side service that has to run inside of that Pod. To ensure high availability and load balancing, Pod Replicas create multiple instances of a pod within a Kubernetes cluster. Pods communicate via a virtual network, each having its own IP Address.
-- Worker Node or Node is the fundamental unit of Kubernetes. It represents a physical or virtual machine that provides CPU and RAM resources. Nodes serve as the hosting environment for pods.
-- Control Plane or Master nodes are the collection of processes responsible for controlling the cluster's state, as well as managing the worker nodes. Master nodes handle essential Kubernetes processes. They are responsible for deciding where new application Pods or database Pods should be scheduled, monitoring and managing the lifecycle of Pods, and incorporating new servers into the cluster.
-- Cluster is a combination of nodes and is made out of atleast one node. It consists of master nodes (control plane) managing worker nodes (or simply nodes). Clusters pool resources like a hivemind, ensuring application stability even if one node encounters issues.
+- `Pod` is the basic component or the smallest deployable unit of Kubernetes. Pod is an abstraction over a container that simplifies container management within Kubernetes, without direct work with Docker or another used container technology. It encapsulates one or more containers, allowing them to share resources and network connections. Pod is usually meant to run one application container inside of it, but it can run multiple containers inside one Pod which is usually the case if you have one main application container and a helper container or some side service that has to run inside of that Pod. To ensure high availability and load balancing, Pod Replicas create multiple instances of a pod within a Kubernetes cluster. Pods communicate via a virtual network, each having its own IP Address.
+- `Worker Node` or `Node` is the fundamental unit of Kubernetes. It represents a physical or virtual machine that provides CPU and RAM resources. Nodes serve as the hosting environment for pods.
+- `Control Plane` or `Master nodes` are the collection of processes responsible for controlling the cluster's state, as well as managing the worker nodes. Master nodes handle essential Kubernetes processes. They are responsible for deciding where new application Pods or database Pods should be scheduled, monitoring and managing the lifecycle of Pods, and incorporating new servers into the cluster.
+- `Cluster` is a combination of nodes and is made out of atleast one node. It consists of master nodes (control plane) managing worker nodes (or simply nodes). Clusters pool resources like a hivemind, ensuring application stability even if one node encounters issues.
 
 ## k3d
 
-K3s is a lightweight, easy to install, deploy, and manage version of stock Kubernetes (K8s). Although K3s is a refined version of Kubernetes (the upstream version), it does not change how Kubernetes works at its core.
+`K3s` is a lightweight, easy to install, deploy, and manage version of stock Kubernetes (K8s). Although K3s is a refined version of Kubernetes (the upstream version), it does not change how Kubernetes works at its core.
 
-k3d is a lightweight wrapper to run k3s (Rancher Lab’s minimal Kubernetes distribution) in docker and makes it very easy to create single- and multi-node k3s clusters in docker, e.g. for local development on Kubernetes. It is a community-driven project but it’s not an official Rancher (SUSE) product.
+`k3d` is a lightweight wrapper to run k3s (Rancher Lab’s minimal Kubernetes distribution) in docker and makes it very easy to create single- and multi-node k3s clusters in docker, e.g. for local development on Kubernetes. It is a community-driven project but it’s not an official Rancher (SUSE) product.
 
 ## Load balancer
 
@@ -106,7 +106,7 @@ Different load balancing algorithms provide different benefits; the choice of lo
 ## Traefik
 
 <p align="center">
-    <img width="" name="traefik" src="/resources/traefik_logo.png">
+    <img width="600" name="traefik" src="/resources/traefik_logo.png">
 </p>
 
 Traefik is a leading modern reverse proxy and load balancer that makes deploying microservices easy. Traefik integrates with your existing infrastructure components and configures itself automatically and dynamically.
