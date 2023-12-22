@@ -163,9 +163,22 @@ Task:
 - Configure nginx to route requests to docker containers (e.g. `frontend.praksa.abhapp.com` to `frontend` docker container)
 - Add SSL certificates (letsencrypt)
 
+### [12 Migrate GitHub Actions configuration to use Internship server](/12-github-actions-to-server/)
+
+Task: Migrate GitHub Actions configuration to use Internship server 
+
+### [13 Setup local kubernetes cluster](/13-setup-local-k8s-cluster/)
+
+Task: Use any sort of provider k3d, kind, minikube. Some providers deploy traefik loadbalancer by default. If not provided, deploy one yourself.
+
 </details>
 
 ## Third month
+
+<details>
+  <summary></summary>
+  
+</details>
 
 <p align="center">
     🔵⚪⚫
