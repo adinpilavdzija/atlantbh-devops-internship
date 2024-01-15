@@ -4,6 +4,13 @@
 
 Task: Create docker-compose file for spring petclinic app -> [docker-compose.yml](/00-spring-petclinic-deployment/docker-compose.yml)
 
+## Solution
+
+Visual representation of the solution:
+<p align="center">
+    <img src="./01_docker_compose.png"/>
+</p>
+
 ## Resources
 
 - [Docker Tutorial for Beginners [FULL COURSE in 3 Hours] by TechWorld with Nana](https://youtu.be/3c-iBn73dDE?si=CWVZAiVqEFOlDqOE)

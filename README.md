@@ -15,7 +15,7 @@ The repository encompasses this main `README.md` file offering essential guidanc
 > End date: 🔴
 
 <p align="left">
-    <img src="https://skillicons.dev/icons?i=git,github,md,linux,bash,vim,vscode,java,maven,angular,postgres,docker,githubactions,nginx"/>
+    <img src="https://skillicons.dev/icons?i=md,linux,bash,vim,maven,postgres,docker,githubactions,nginx,jenkins,kubernetes"/>
 </p>
 
 ## Further insight
@@ -37,7 +37,7 @@ Table of contents has been removed due to built-in support on GitHub. Markdown f
 
 **[Trello](https://trello.com) is a project management tool that is used for this internship.** It is a popular, simple, and easy-to-use collaboration tool that enables organizing projects and everything related to them into boards. 
 
-### Gitflow workflow
+### Git Feature Branch Workflow
 
 <img name="git_feature_branch_workflow.png" src="/resources/git_feature_branch_workflow.png"/>
 
@@ -61,6 +61,10 @@ $ brew list #to see a list of all the packages you've installed
 `00-spring-petclinic-deployment` directory contains cloned versions of both the application's frontend and backend which are updated versions resulting from completed tasks:
 - `spring-petclinic-rest` [(Original Repository)](https://github.com/spring-petclinic/spring-petclinic-rest) is the backend version of the Spring Petclinic application provides a REST API. 
 - `spring-petclinic-angular` [(Original Repository)](https://github.com/spring-petclinic/spring-petclinic-angular) is the Angular frontend application (Client only) which consumes the REST API (from backend spring-petclinic-rest project). Prior to launching the frontend application, it's essential to start the backend server.
+
+## [AuctionApp](https://github.com/EmirKapic/AuctionApp)
+
+`AuctionApp` is the application for which I've designed a CI/CD pipeline to facilitate collaboration among DEV, QA, and PM teams. The repository [auction_app_tests](https://github.com/ajlasisic/auction_app_tests) serves as the centralized location for the tests associated with this application.
 
 ## First month
 

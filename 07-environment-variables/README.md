@@ -113,7 +113,7 @@ POSTGRES_PASSWORD=
 ```
 
 > [!TIP]
-> The `envsubst` command performs variable replacement by searching for patterns within input data and replacing them with corresponding variable values. To use it effectively, export the necessary variables into the system environment and then execute `envsubst < .env.tpl > .env`.
+> The `envsubst` command performs variable replacement by searching for patterns within input data and replacing them with corresponding variable values. To use it effectively, export the necessary variables into the system environment and then execute `$ envsubst < .env.tpl > .env`.
 
 ## `.gitignore`
 
