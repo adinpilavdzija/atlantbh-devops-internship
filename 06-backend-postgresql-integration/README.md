@@ -21,7 +21,7 @@ For Maven, add the following dependency if missing:
 
 In its default configuration, Petclinic uses an in-memory database (HSQLDB) which gets populated at startup with data. A similar setups is provided for MySql and PostgreSQL in case a persistent database configuration is needed. To run petclinic locally using persistent database, it is needed to change profile defined in application.properties file.
 
-For PostgeSQL database, it is needed to change param `hsqldb` to `postgresql` in string defined in `application.properties` file:
+For PostgreSQL database, it is needed to change param `hsqldb` to `postgresql` in string defined in `application.properties` file:
 ```
 spring.profiles.active=hsqldb,spring-data-jpa
 ```

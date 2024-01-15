@@ -16,7 +16,7 @@ Task: Use any sort of provider k3d, kind, minikube. Some providers deploy traefi
 
 Install k3d using Homebrew:
 ```bash
-brew install k3d
+$ brew install k3d
 ```
 
 Create k3d cluster and verify:

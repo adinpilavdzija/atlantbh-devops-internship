@@ -39,6 +39,10 @@ Task:
 - Move to directory `00-spring-petclinic-deployment` (contains `docker-compose.yml` file) using the cd command cd `atlantbh-devops-internship/00-spring-petclinic-deployment`.
 - Once inside the directory, run `docker-compose up -d` to start the Docker containers defined in the `docker-compose.yml` file in a detached mode.
 
+<p align="center">
+    <img src="./01_screenshot.png"/>
+</p>
+
 ### Using the SSH Config File
 
 The `~/.ssh` directory is automatically created when the user runs the `ssh` command for the first time. If the directory doesn’t exist on your system, create it using the command: `mkdir -p ~/.ssh && chmod 700 ~/.ssh`.  
@@ -116,9 +120,9 @@ Nov 30 09:30:03 abh-MacBookPro systemd[1]: Started A high performance web server
 
 Before making any changes, back up the default Nginx configuration files for safety:
 ```bash
-cd /etc/nginx/
-sudo tar -czvf nginx_config_backup.tar.gz * #creates a .tar.gz file containing all the configuration files from the Nginx directory
-sudo tar -xzvf nginx_config_backup.tar.gz -C /etc/nginx/ #extract the backup file
+$ cd /etc/nginx/
+$ sudo tar -czvf nginx_config_backup.tar.gz * #creates a .tar.gz file containing all the configuration files from the Nginx directory
+$ sudo tar -xzvf nginx_config_backup.tar.gz -C /etc/nginx/ #extract the backup file
 ```
 
 ### NGINX Files and Directories
@@ -242,7 +246,15 @@ Take a look at ...
   - [frontend.praksa.abhapp.com](/00-spring-petclinic-deployment/nginx/frontend.praksa.abhapp.com)
   - [backend.praksa.abhapp.com](/00-spring-petclinic-deployment/nginx/backend.praksa.abhapp.com)
 
+<p align="center">
+    <img src="./02_screenshot.png"/>
+</p>
+
 ## SSL, TLS, HTTPS
+
+<p align="center">
+    <img src="./03_screenshot.png"/>
+</p>
 
 - **Secure Sockets Layer (SSL) certificates**, sometimes called digital certificates, are used to establish an encrypted connection between a browser or user’s computer and a server or website. SSL is standard technology for securing an internet connection by encrypting data sent between a website and a browser (or between two servers). It prevents hackers from seeing or stealing any information transferred, including personal or financial data.
 - SSL certificates establish an encrypted connection between a website/server and a browser with what’s known as an “**[SSL handshake](https://www.cloudflare.com/en-gb/learning/ssl/what-happens-in-a-tls-handshake/)**”. For visitors to the website, the process is invisible and instantaneous.
@@ -289,6 +301,10 @@ Congratulations! You have successfully enabled HTTPS on https://backend.praksa.a
 The `--nginx` flag specifies that Certbot should use the Nginx plugin for the certificate installation process, while `-d` flag specifies the domain for which the certificate should be generated and installed.
 
 Certbot automatically adjusts the Nginx configuration files, incorporating the necessary modifications to enable HTTPS.
+
+<p align="center">
+    <img src="./04_screenshot.png"/>
+</p>
 
 ### Screenshots of certificates
 <details>

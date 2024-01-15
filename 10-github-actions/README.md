@@ -251,6 +251,11 @@ jobs:
 ```
 </details>
 
+This showcases my CI/CD process, featuring two distinct workflows with two event triggers:
+<p align="center">
+    <img src="./01_screenshot_my_workflows.png"/>
+</p>
+
 ## Security: Best Practices
 
 [GitHub Actions - Security Best Practices](https://blog.gitguardian.com/github-actions-security-cheat-sheet/)

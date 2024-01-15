@@ -95,7 +95,7 @@ Dockerfile -> Image -> Container:
 By default, Docker uses a bridge network with a subnet like 172.17.0.0/16 and a gateway like 172.17.0.1 for containers to communicate with the host and other containers on the same network. We can create our custom network, for example:
 
 ```
-docker network create petclinic-network
+$ docker network create petclinic-network
 ```
 
 Docker automatically assign a subnet (`172.18.0.0/16`) and gateway (`172.18.0.1`) to the network if not specified. 
@@ -112,7 +112,7 @@ We can configure host volumes at the service level, and named volumes in the out
 
 It is not required to first create volume: `docker volume create [OPTIONS] [VOLUME]`. You can also specify e.g. `-v psql-db:/var/lib/postgresql/data` it in `docker run` command:
 ```
-docker run -d -p 5432:5432 --network petclinic-network -v psql-db:/var/lib/postgresql/data --name petclinic-postgres petclinic-postgres
+$ docker run -d -p 5432:5432 --network petclinic-network -v psql-db:/var/lib/postgresql/data --name petclinic-postgres petclinic-postgres
 ```
 
 ## Create Database Dockerfile and build docker image <a name="database"></a>
@@ -253,9 +253,9 @@ $ docker push adinpilavdzija/petclinic-angular:1.0
 
 Pull images from Docker Hub.
 ```
-docker pull adinpilavdzija/petclinic-postgres:1.0
-docker pull adinpilavdzija/petclinic-rest:1.0
-docker pull adinpilavdzija/petclinic-angular:1.0
+$ docker pull adinpilavdzija/petclinic-postgres:1.0
+$ docker pull adinpilavdzija/petclinic-rest:1.0
+$ docker pull adinpilavdzija/petclinic-angular:1.0
 ```
 
 ## Image-building best practices
