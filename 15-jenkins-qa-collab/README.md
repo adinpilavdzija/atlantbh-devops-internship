@@ -4,7 +4,7 @@
 
 Task: Prepare local Jenkins deployment for QA collaboration
 
-DEV's app: https://github.com/EmirKapic/AuctionApp
+DEV's app: https://github.com/EmirKapic/AuctionApp  
 QA's tests: https://github.com/ajlasisic/auction_app_tests
 
 ## Resources
@@ -14,35 +14,43 @@ QA's tests: https://github.com/ajlasisic/auction_app_tests
 
 ## Jenkins cheatsheet
 
+<details>
+  <summary></summary>
+
 ![Jenkins cheatsheet](../resources/jenkins_cheatsheet.jpeg)
+</details>
 
 ## Jenkins vs GitHub Actions
 
+<details>
+  <summary></summary>
+
 ![Jenkins vs GitHub Actions](../resources/github_actions_vs_jenkins.jpg)
+</details>
 
 ## Jenkins
 
 <p align="center">
-  <img src="../resources/jenkins_logo.png" />
+  <img width=500 src="../resources/jenkins_logo.png" />
 </p>
 
-Jenkins is an open source continuous integration/continuous delivery and deployment (CI/CD) automation software DevOps tool written in the Java programming language. It is used to implement CI/CD workflows, called pipelines.
+**Jenkins** is an open source **continuous integration/continuous delivery and deployment (CI/CD)** automation software DevOps tool written in the Java programming language. It is used to implement CI/CD workflows, called **pipelines**.
 
-Pipelines automate testing and reporting on isolated changes in a larger code base in real time and facilitates the integration of disparate branches of the code into a main branch. They also rapidly detect defects in a code base, build the software, automate testing of their builds, prepare the code base for deployment (delivery), and ultimately deploy code to containers and virtual machines, as well as bare metal and cloud servers. There are several commercial versions of Jenkins. This definition only describes the upstream Open Source project.
+**Pipelines** automate testing and reporting on isolated changes in a larger code base in real time and facilitates the integration of disparate branches of the code into a main branch. They also rapidly detect defects in a code base, build the software, automate testing of their builds, prepare the code base for deployment (delivery), and ultimately deploy code to containers and virtual machines, as well as bare metal and cloud servers. There are several commercial versions of Jenkins. This definition only describes the upstream Open Source project.
 
 Over time, continuous delivery and deployment features have been added to Jenkins. In both cases, automation reduces the number of errors that occur because the correct steps and best practices are encoded into Jenkins. 
 
 Jenkins runs as a server on a variety of platforms including Windows, MacOS, Unix variants and especially, Linux. More recently, Jenkins has been adapted to run in a Docker container. 
 
-### Piepeline
+### Pipeline
 
-To operate Jenkins, pipelines are created. A pipeline is a series of steps the Jenkins server will take to perform the required tasks of the CI/CD process. These are stored in a plain text Jenkinsfile. The Jenkinsfile uses a curly bracket syntax that looks similar to JSON. Steps in the pipeline are declared as commands with parameters and encapsulated in curly brackets. The Jenkins server then reads the Jenkinsfile and executes its commands, pushing the code down the pipeline from committed source code to production runtime. 
+To operate Jenkins, pipelines are created. A pipeline is a series of steps the Jenkins server will take to perform the required tasks of the CI/CD process. These are stored in a plain text **Jenkinsfile**. The **Jenkinsfile** uses a curly bracket syntax that looks similar to JSON. Steps in the pipeline are declared as commands with parameters and encapsulated in curly brackets. The Jenkins server then reads the **Jenkinsfile** and executes its commands, pushing the code down the pipeline from committed source code to production runtime. 
 
 ### Plugins
 
-A plugin is an enhancement to the Jenkins system. They help extend Jenkins capabilities and integrated Jenkins with other software. Plugins can be downloaded from the online Jenkins Plugin repository and loaded using the Jenkins Web UI or CLI. Currently, the Jenkins community claims over 1500 plugins available for a wide range of uses. A plugin is written in Java. Plugins use their own set of Java Annotations and design patterns that define how the plugin is instantiated, extension points, the function of the plugin and the UI representation in the Jenkins Web UI. 
+A **plugin** is an enhancement to the Jenkins system. They help extend Jenkins capabilities and integrated Jenkins with other software. **Plugins** can be downloaded from the online Jenkins Plugin repository and loaded using the Jenkins Web UI or CLI. Currently, the Jenkins community claims over 1500 plugins available for a wide range of uses. A plugin is written in Java. Plugins use their own set of Java Annotations and design patterns that define how the plugin is instantiated, extension points, the function of the plugin and the UI representation in the Jenkins Web UI. 
 
-Plugins help to integrate other developer tools into the Jenkins environment, add new user interface elements to the Jenkins Web UI, help with administration of Jenkins, and enhance Jenkins for build and source code management. One of the more common uses of plugins is to provide integration points for CI/CD sources and destinations. These include:
+**Plugins** help to integrate other developer tools into the Jenkins environment, add new user interface elements to the Jenkins Web UI, help with administration of Jenkins, and enhance Jenkins for build and source code management. One of the more common uses of plugins is to provide integration points for CI/CD sources and destinations. These include:
 - software version control systems (SVCs) such as Git and Atlassian BitBucket, 
 - container runtime systems - especially Docker, 
 - virtual machine hypervisors such as VMware vSphere, 
@@ -52,12 +60,12 @@ Plugins help to integrate other developer tools into the Jenkins environment, ad
 
 ### Advantages and disadvantages
 
-Advantages:
+**Advantages:**
 - plugins enhance the extendibility and flexibility of Jenkins,
 - it's highly unopinionated, so it fits well into most environments, including complex hybrid and multi-cloud systems,
 - broad knowledge base, extensive documentation, and abundant community resources
 
-Disadvantages:
+**Disadvantages:**
 - production Jenkins can be difficult to implement,
 - the open source system is also a single server architecture, so it doesn't allow for federation across servers resulting in performance issues,
 - it relies on older Java architectures and technology, specifically servlets and Maven
@@ -74,7 +82,7 @@ $ brew services restart jenkins-lts #Restart the Jenkins service
 $ brew upgrade jenkins-lts #Update the Jenkins version
 ```
 
-After starting the Jenkins service, browse to `http://localhost:8080` and follow the instructions to complete the installation. Also see the external materials for installation guidelines. For example, this blogpost describes the installation process.
+After starting the Jenkins service, browse to `[http://localhost:8080](http://localhost:8080)` and follow the instructions to complete the installation. Also see the external materials for installation guidelines. For example, this blogpost describes the installation process.
 
 ## Setting required plugins
 
@@ -125,7 +133,7 @@ pipeline { //Pipeline block is the starting point for your scripted pipeline
 }
 ```
 
-![01_screenshot](./01_screenshot.png)
+![01_screenshot](./01_screenshot_jenkins.png)
 
 - [regression_test pipeline](./regression_test) is the identical pipeline utilized for both [smoke_test](./smoke_test) and [api_test](./api_test), with the sole distinction lying in the different `npx wdio` commands used:
 ```groovy
@@ -200,5 +208,3 @@ stage('Manual Approval') {
     }
 }
 ```
-
-These are some of the fundamental components of a Jenkins scripted pipeline. Depending on your requirements, you might include additional features, such as custom functions, external library imports, or specific plugins for integrations.
