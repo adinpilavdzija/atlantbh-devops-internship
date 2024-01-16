@@ -5,13 +5,13 @@
 QA intern needs ability to deploy application to local environment for the purposes of testing. This application is from DEV intern.
 
 Task: 
-- Sync with DEV intern with details how application works 
-- Setup Dockerfiles for FE & BE application -> [Dockerfile.backend](./Dockerfile.backend), [Dockerfile.frontend](./Dockerfile.frontend)
-- Prepare docker-compose.yaml for easier deployment -> [docker-compose.yml](./docker-compose.yml)
+- `Sync` with DEV intern with details how application works 
+- Setup `Dockerfiles` for FE & BE application -> [Dockerfile.backend](./Dockerfile.backend), [Dockerfile.frontend](./Dockerfile.frontend)
+- Prepare `docker-compose.yml` for easier deployment -> [docker-compose.yml](./docker-compose.yml)
 
 ## Setup local environments and database
 
-Cloned Developer's app from https://github.com/EmirKapic/AuctionApp. I engaged in a synchronous meeting with both the developer and QA to gain a comprehensive understanding of the details involved in the functioning of the app. The developer provided me with the essential secrets and environment variables ([application.yml] and [.env] (for the root of frontend directory)) required for the project, as well as the commands needed to build the backend and frontend components locally, ensuring a smooth and efficient development process.
+Cloned Developer's app from `https://github.com/EmirKapic/AuctionApp`. I engaged in a synchronous meeting with both the developer and QA to gain a comprehensive understanding of the details involved in the functioning of the app. The developer provided me with the essential secrets and environment variables (`application.yml` and `.env` (for the root of frontend directory)) required for the project, as well as the commands needed to build the backend and frontend components locally, ensuring a smooth and efficient development process.
 
 ```bash
 #backend
@@ -93,16 +93,16 @@ It was essential to establish an Nginx reverse proxy with domains for both our f
 
 After creation of Nginx configuration files, we needed to create symbolic links (symlinks) in the Nginx configuration to enable specific sites:
 ```bash
-sudo ln -s /etc/nginx/sites-available/auction.praksa.abhapp.com /etc/nginx/sites-enabled/
-sudo ln -s /etc/nginx/sites-available/auctback.praksa.abhapp.com /etc/nginx/sites-enabled/
+$ sudo ln -s /etc/nginx/sites-available/auction.praksa.abhapp.com /etc/nginx/sites-enabled/
+$ sudo ln -s /etc/nginx/sites-available/auctback.praksa.abhapp.com /etc/nginx/sites-enabled/
 ```
 
 The implementation of an SSL certificate using Let's Encrypt was necessary to secure the communication between clients and the server. SSL encryption ensures that data exchanged between users and the server remains confidential and secure, safeguarding sensitive information from potential unauthorized access or interception during transit. This is particularly crucial for protecting user data and maintaining the integrity of communication channels in a production environment.
 
 SSL certificates for the domains were obtained through the utilization of Certbot:
 ```bash
-sudo certbot --nginx -d auction.praksa.abhapp.com -d www.auction.praksa.abhapp.com
-sudo certbot --nginx -d auctback.praksa.abhapp.com -d www.auctback.praksa.abhapp.com
+$ sudo certbot --nginx -d auction.praksa.abhapp.com -d www.auction.praksa.abhapp.com
+$ sudo certbot --nginx -d auctback.praksa.abhapp.com -d www.auctback.praksa.abhapp.com
 ```
 
 Take a look at ...
