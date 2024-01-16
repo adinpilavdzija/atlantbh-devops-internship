@@ -1,0 +1,59 @@
+version: '3'
+services:
+  auction-postgres:
+    image: postgres:16-alpine
+    hostname: auction-postgres
+    environment:
+      POSTGRES_DB: auction-app
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5433:5432"
+    networks:
+      - auction-network
+    volumes:
+      - auction-db:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    container_name: auction-postgres
+
+  auction-backend:
+    build:
+      context: ../backend/
+      dockerfile: Dockerfile.backend
+    image: auction-backend:latest
+    hostname: auction-backend
+    depends_on:
+      - auction-postgres
+    environment:
+      DB_URL: ${DB_URL}
+      DB_USERNAME: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      JWT_KEY: ${JWT_KEY}
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY}
+      CLIENT_HOST_URL: https://auction.praksa.abhapp.com/
+    ports:
+      - "8080:8080"
+    networks:
+      - auction-network
+    container_name: auction-backend
+
+  auction-frontend:
+    build:
+      context: ../frontend/
+      dockerfile: Dockerfile.frontend
+    image: auction-frontend:latest
+    depends_on:
+      - auction-backend
+    ports:
+      - "5173:80"
+    networks:
+      - auction-network
+    container_name: auction-frontend
+
+networks:
+  auction-network:
+    name: auction-network
+
+volumes:
+  auction-db:
+    name: auction-db
