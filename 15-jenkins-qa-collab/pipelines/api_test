@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    
+    tools {
+        nodejs "NodeJS"
+    }
+    
+    environment {
+        CI = "true"
+    }
+
+    stages {
+
+        stage('Checkout test repo') {
+            steps {
+                git branch: 'main', url: 'https://github.com/ajlasisic/auction_app_tests'
+            }
+        }
+
+        stage('Api test') {
+            steps {
+                sh 'npm install && npx wdio wdio.conf.js --spec ./api_tests/specs/test.e2e.js'
+            }
+        }
+    }
+}

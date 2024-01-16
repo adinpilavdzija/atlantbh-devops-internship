@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    
+    tools {
+        nodejs "NodeJS"
+    }
+    
+    environment {
+        CI = "true"
+    }
+
+    stages {
+
+        stage('Checkout test repo') {
+            steps {
+                git branch: 'main', url: 'https://github.com/ajlasisic/auction_app_tests'
+            }
+        }
+
+        stage('Smoke test') {
+            steps {
+                sh 'npm install && npx wdio wdio.conf.js --spec ./ui_tests/specs/smoke.spec.js'
+            }
+        }
+    }
+}
