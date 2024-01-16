@@ -82,7 +82,7 @@ $ brew services restart jenkins-lts #Restart the Jenkins service
 $ brew upgrade jenkins-lts #Update the Jenkins version
 ```
 
-After starting the Jenkins service, browse to `[http://localhost:8080](http://localhost:8080)` and follow the instructions to complete the installation. Also see the external materials for installation guidelines. For example, this blogpost describes the installation process.
+After starting the Jenkins service, browse to [`http://localhost:8080`](http://localhost:8080) and follow the instructions to complete the installation. Also see the external materials for installation guidelines. For example, this blogpost describes the installation process.
 
 ## Setting required plugins
 
@@ -133,7 +133,9 @@ pipeline { //Pipeline block is the starting point for your scripted pipeline
 }
 ```
 
-![01_screenshot](./01_screenshot_jenkins.png)
+<p align="center">
+  <img width=700 src="./01_screenshot_jenkins.png" />
+</p>
 
 - [regression_test pipeline](./regression_test) is the identical pipeline utilized for both [smoke_test](./smoke_test) and [api_test](./api_test), with the sole distinction lying in the different `npx wdio` commands used:
 ```groovy
