@@ -1,0 +1,21 @@
+name: Deploy app using docker-compose
+
+on:
+  push:
+    branches: 
+      - master
+
+jobs:    
+  docker-compose:
+    name: Docker Compose
+    runs-on: self-hosted
+
+    steps:
+      - name: Check out repository       
+        uses: actions/checkout@v4
+
+      - name: Environment variables
+        run: envsubst < ./deployment/.env.tpl > ./frontend/.env
+        
+      - name: Docker Compose
+        run: docker compose -f ./deployment/docker-compose.yml up -d --build
