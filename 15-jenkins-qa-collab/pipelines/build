@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+    
+    tools {
+        nodejs "NodeJS"
+    }
+    
+    environment {
+        CI = "true"
+    }
+
+    stages {
+        
+        stage('Checkout app repo') {
+            steps {
+                git 'https://github.com/adinpilavdzija/auction'
+            }
+        }
+        
+        stage('Build Backend') {
+            steps {
+                sh 'cd backend && ./mvnw clean package'
+            }
+        }
+        
+        stage('Build Frontend') {
+            steps {
+                sh 'cd frontend && npm install && npm run build'
+            }
+        }
+    }
+}
