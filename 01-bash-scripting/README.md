@@ -2,11 +2,11 @@
 
 # Task
 
-- 01 - Write a script that gets CPU and Memory usage -> [Script](https://github.com/adinpilavdzija/devops-internship-atlantbh/blob/develop/01-bash-scripting/01_cpu_and_memory_usage.sh)
-- 02 - Write a script that tests connectivity to a list of websites and reports the status -> [Script1](https://github.com/adinpilavdzija/devops-internship-atlantbh/blob/develop/01-bash-scripting/02_connectivity_list_of_websites_1.sh), [Script2](https://github.com/adinpilavdzija/devops-internship-atlantbh/blob/develop/01-bash-scripting/02_connectivity_list_of_websites_2.sh)
-- 03 - Write a script that pings a host and reports latency -> [Script](https://github.com/adinpilavdzija/devops-internship-atlantbh/blob/develop/01-bash-scripting/03_ping_host_latency.sh)
-- 04 - Write a script that traces the path of a network packet from the source to a destination -> [Script](https://github.com/adinpilavdzija/devops-internship-atlantbh/blob/develop/01-bash-scripting/04_trace_path_network_packet.sh)
-- 05 - Write a script that tests the DNS resolution time for a list of domains -> [Script1](https://github.com/adinpilavdzija/devops-internship-atlantbh/blob/develop/01-bash-scripting/05_dns_resolution_time_list_of_domains_1.sh), [Script2](https://github.com/adinpilavdzija/devops-internship-atlantbh/blob/develop/01-bash-scripting/05_dns_resolution_time_list_of_domains_2.sh)
+- 01 - Write a script that gets CPU and Memory usage -> [Script](/01-bash-scripting/01_cpu_and_memory_usage.sh)
+- 02 - Write a script that tests connectivity to a list of websites and reports the status -> [Script1](/01-bash-scripting/02_connectivity_list_of_websites_1.sh), [Script2](/01-bash-scripting/02_connectivity_list_of_websites_2.sh)
+- 03 - Write a script that pings a host and reports latency -> [Script](/01-bash-scripting/03_ping_host_latency.sh)
+- 04 - Write a script that traces the path of a network packet from the source to a destination -> [Script](/01-bash-scripting/04_trace_path_network_packet.sh)
+- 05 - Write a script that tests the DNS resolution time for a list of domains -> [Script1](/01-bash-scripting/05_dns_resolution_time_list_of_domains_1.sh), [Script2](/01-bash-scripting/05_dns_resolution_time_list_of_domains_2.sh)
 
 # Notes
 

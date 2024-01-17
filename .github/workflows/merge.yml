@@ -1,0 +1,73 @@
+name: Build and Push Docker Images on Develop Merge
+
+on:
+  push:
+    branches: 
+      - develop
+
+jobs:
+  backend:
+    name: Backend Build and Push Image
+    runs-on: self-hosted
+    defaults:
+       run:
+         working-directory: ./00-spring-petclinic-deployment/spring-petclinic-rest/
+    outputs:
+      sha_short: ${{ steps.sha_step.outputs.sha_short }}
+      
+    steps:
+      - name: Check out repository     
+        uses: actions/checkout@v4
+
+      - name: Git Short Commit SHA Extraction
+        id: sha_step
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Docker Login
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          logout: false
+
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v5
+        with:
+          context: ./00-spring-petclinic-deployment/spring-petclinic-rest/
+          push: true
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/spring-petclinic-rest:${{ steps.sha_step.outputs.sha_short }}
+            ${{ secrets.DOCKER_USERNAME }}/spring-petclinic-rest:latest
+
+  frontend:
+    name: Frontend Build and Push Image
+    needs: backend
+    runs-on: self-hosted
+    defaults:
+       run:
+         working-directory: ./00-spring-petclinic-deployment/spring-petclinic-angular/
+
+    steps: 
+      - name: Check out repository       
+        uses: actions/checkout@v4
+
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v5
+        with:
+          context: ./00-spring-petclinic-deployment/spring-petclinic-angular/
+          push: true
+          tags: | 
+            ${{ secrets.DOCKER_USERNAME }}/spring-petclinic-angular:${{ needs.backend.outputs.sha_short }}
+            ${{ secrets.DOCKER_USERNAME }}/spring-petclinic-angular:latest
+    
+  docker-compose:
+    name: Docker Compose
+    needs: [backend, frontend]
+    runs-on: self-hosted
+
+    steps:
+      - name: Check out repository       
+        uses: actions/checkout@v4
+
+      - name: Docker Compose
+        run: docker compose -f ./00-spring-petclinic-deployment/docker-compose.yml up -d --build

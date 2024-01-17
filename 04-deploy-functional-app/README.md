@@ -110,20 +110,20 @@ Screenshots for verification that the frontend app is integrated with backend:
   <summary></summary>
 
 Backend GET:
-![01_backend_get](https://github.com/adinpilavdzija/devops-internship-atlantbh/blob/9090c61d22147a8c7f530079fccc0de50c78fe71/04-deploy-functional-app/screenshots/01_backend_get.png)
+![01_backend_get](/04-deploy-functional-app/screenshots/01_backend_get.png)
 
 Frontend POST:
-![02_frontend_post](https://github.com/adinpilavdzija/devops-internship-atlantbh/blob/9090c61d22147a8c7f530079fccc0de50c78fe71/04-deploy-functional-app/screenshots/02_frontend_post.png)
+![02_frontend_post](/04-deploy-functional-app/screenshots/02_frontend_post.png)
 
 Backend GET:
-![03_backend_get](https://github.com/adinpilavdzija/devops-internship-atlantbh/blob/9090c61d22147a8c7f530079fccc0de50c78fe71/04-deploy-functional-app/screenshots/03_backend_get.png)
+![03_backend_get](/04-deploy-functional-app/screenshots/03_backend_get.png)
 
 Frontend GET:
-![04_frontend_get](https://github.com/adinpilavdzija/devops-internship-atlantbh/blob/9090c61d22147a8c7f530079fccc0de50c78fe71/04-deploy-functional-app/screenshots/04_frontend_get.png)
+![04_frontend_get](/04-deploy-functional-app/screenshots/04_frontend_get.png)
 
 Backend POST:
-![05_backend_post](https://github.com/adinpilavdzija/devops-internship-atlantbh/blob/9090c61d22147a8c7f530079fccc0de50c78fe71/04-deploy-functional-app/screenshots/05_backend_post.png)
+![05_backend_post](/04-deploy-functional-app/screenshots/05_backend_post.png)
 
 Frontend GET:
-![06_frontend_get](https://github.com/adinpilavdzija/devops-internship-atlantbh/blob/9090c61d22147a8c7f530079fccc0de50c78fe71/04-deploy-functional-app/screenshots/06_frontend_get.png)
+![06_frontend_get](/04-deploy-functional-app/screenshots/06_frontend_get.png)
 </details>

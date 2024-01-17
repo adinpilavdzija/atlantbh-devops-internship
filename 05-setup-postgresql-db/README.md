@@ -95,14 +95,14 @@ For performing CRUD operations (Create, Read, Update, Delete) in a PostgreSQL da
 - In addition to these permissions on tables, users may need permissions on sequences (for auto-incrementing primary keys) and any other database objects that are involved in the CRUD operations, such as views, stored procedures, or triggers. Auto-incrementing primary keys are often implemented using serial or bigserial data types, which are linked to sequences.
 
 ```
-GRANT CONNECT ON DATABASE petclinic TO adinp;
+$ GRANT CONNECT ON DATABASE petclinic TO adinp;
 
-GRANT SELECT, INSERT, UPDATE, DELETE ON owners, pets, roles, specialties, types, users, vet_specialties, vets, visits TO adinp;
+$ GRANT SELECT, INSERT, UPDATE, DELETE ON owners, pets, roles, specialties, types, users, vet_specialties, vets, visits TO adinp;
 ```
 
 Executing the `psql` command `\ds` provides a list of relations, including sequences. Grant pemission on sequences with following command:
 ```
-GRANT USAGE, SELECT ON SEQUENCE types_id_seq, owners_id_seq, pets_id_seq, roles_id_seq, specialties_id_seq, types_id_seq, vets_id_seq, visits_id_seq TO adinp;
+$ GRANT USAGE, SELECT ON SEQUENCE types_id_seq, owners_id_seq, pets_id_seq, roles_id_seq, specialties_id_seq, types_id_seq, vets_id_seq, visits_id_seq TO adinp;
 ```
 
 Change password if needed:

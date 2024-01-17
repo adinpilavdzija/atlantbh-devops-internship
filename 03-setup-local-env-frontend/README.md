@@ -78,8 +78,8 @@ ng version
 
 ## Angular frontend for Spring Petclinic
 
-> **Warning**
-> Warning: **client only**. Use REST API from backend [spring-petclinic-rest](https://github.com/spring-petclinic/spring-petclinic-rest) project. You need start backend server before start frontend application.
+> [!WARNING]
+> **Client only**. Use REST API from backend [spring-petclinic-rest](https://github.com/spring-petclinic/spring-petclinic-rest) project. You need start backend server before start frontend application.
 
 **Clone project from github:**
 
@@ -100,7 +100,7 @@ You can see current dependencies in `package.json` file.
 
 Run `ng serve` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
-![Angular](https://github.com/adinpilavdzija/devops-internship-atlantbh/blob/develop/03-setup-local-env-frontend/screenshot_angular.png)
+![Angular](/03-setup-local-env-frontend/screenshot_frontend_angular.png)
 <p align="right">
 <sub>(Web app preview)</sub>
 </p>

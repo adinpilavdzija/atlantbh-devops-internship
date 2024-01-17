@@ -15,11 +15,18 @@ Task:
 
 <details>
 <summary>Screenshots of task completion</summary>
-	
+
+Images:
 ![1](screenshots/01_images.png)
+
+Containers:
 ![2](screenshots/02_containers.png)
+
+Network:
 ![3](screenshots/03_network.png)
 ![4](screenshots/04_network_inspect.png)
+
+Volume:
 ![5](screenshots/05_volume.png)
 ![6](screenshots/06_volume_inspect.png)
 </details>
@@ -73,6 +80,7 @@ Dockerfile -> Image -> Container:
   - **Container** is an isolated system that holds everything required to run a specific application. It is a specific instance of an image that simulates the necessary environment. 
   - **Images**, on the other hand, are used to start up containers. From running containers, we can get images, which can be composed together to form a system-agnostic way of packaging applications. Images can be pre-built, retrieved from registries, created from already existing ones, or combined together via a common network.
 - **Dockerfiles** are how we containerize our application, or how we build a new container from an already pre-built image and add custom logic to start our application. From a Dockerfile, we use the Docker build command to create an image. Think of a Dockerfile as a text document that contains the commands we call on the command line to build an image.
+> [!IMPORTANT]
 > If you have a file called Dockerfile in the root of your build context it will be automatically picked up. If you need more than one Dockerfile for the same build context, the suggested naming convention is: `Dockerfile.<purpose>`. These dockerfiles could be in the root of your build context or in a subdirectory to keep your root directory more tidy.
 - Dockerfile works in **layers**. These are the building blocks of Docker. The first layer starts with the FROM keyword and defines which pre-built image we will use to build an image. We can then define user permissions and startup scripts. In Docker, a container is an image with a readable layer built on top of a read-only layer. These layers are called intermediate images, and they are generated when we execute the commands in our Dockerfile during the build stage.
 - **Docker Registry** is a centralized location for storing and distributing Docker images. The most commonly used public registry is **Docker Hub**, but you can also create your own private registry.
@@ -84,10 +92,10 @@ Dockerfile -> Image -> Container:
 
 ## Create Docker network for spring petclinic containers <a name="network"></a>
 
-By default, Docker uses a bridge network with a subnet like 172.17.0.0/16 and a gateway like 172.17.0.1 for containers to communicate with the host and other containers on the same network. We can create our custom network,for example:
+By default, Docker uses a bridge network with a subnet like 172.17.0.0/16 and a gateway like 172.17.0.1 for containers to communicate with the host and other containers on the same network. We can create our custom network, for example:
 
 ```
-docker network create petclinic-network
+$ docker network create petclinic-network
 ```
 
 Docker automatically assign a subnet (`172.18.0.0/16`) and gateway (`172.18.0.1`) to the network if not specified. 
@@ -104,28 +112,37 @@ We can configure host volumes at the service level, and named volumes in the out
 
 It is not required to first create volume: `docker volume create [OPTIONS] [VOLUME]`. You can also specify e.g. `-v psql-db:/var/lib/postgresql/data` it in `docker run` command:
 ```
-docker run -d -p 5432:5432 --network petclinic-network -v psql-db:/var/lib/postgresql/data --name petclinic-postgres petclinic-postgres
+$ docker run -d -p 5432:5432 --network petclinic-network -v psql-db:/var/lib/postgresql/data --name petclinic-postgres petclinic-postgres
 ```
 
 ## Create Database Dockerfile and build docker image <a name="database"></a>
 
-[Database Dockerfile](../postgres/Dockerfile) 
+[Database Dockerfile](/00-spring-petclinic-deployment/postgres/Dockerfile) 
 
 Use following commands to build image and run container:
 ```
 $ docker build -t petclinic-postgres .
 $ docker run -d -p 5432:5432 --network petclinic-network -v psql-db:/var/lib/postgresql/data --name petclinic-postgres petclinic-postgres
 ```
-> **Important**
 > When mounting a volume to /var/lib/postgresql, the /var/lib/postgresql/data path is a local volume from the container runtime, thus data is not persisted on the mounted volume. This optional variable can be used to define another location - like a subdirectory - for the database files. The default is /var/lib/postgresql/data. If the data volume you're using is a filesystem mountpoint (like with GCE persistent disks), or remote folder that cannot be chowned to the postgres user (like some NFS mounts), or contains folders/files (e.g. lost+found), Postgres initdb requires a subdirectory to be created within the mountpoint to contain the data.
 
+> [!TIP]
+> Add `POSTGRES_PASSWORD` and `POSTGRES_DB` as `ARG` instead of `ENV` for this Dockerfile. This way, we can provide these 2 variables during `docker build` which gives us more flexibillity while building image to change credentials using [`--build-arg`](https://docs.docker.com/build/guide/build-args/).
+
 ## Create Backend Dockerfile and build docker image <a name="backend"></a>
+
+[Backend Dockerfile](../00-spring-petclinic-deployment/spring-petclinic-rest/Dockerfile)
 
 Update the `datasource.url` in `application.properties` file or `.env` file. We can find container's IPV4 address with `docker inspect network-name`. Instead of `localhost`, use IPv4 address or hostname of the database container:
 `spring.datasource.url=jdbc:postgresql://localhost:5432/petclinic`
 `spring.datasource.url=jdbc:postgresql://172.18.0.2:5432/petclinic`
 
-[Backend Dockerfile](../spring-petclinic-rest/Dockerfile)
+The location of a `.jar` file can vary, but it's often found in the project's `target` directory: `/target/spring-petclinic-rest-3.0.2.jar`. Another location (`/Users/user/.m2/repository/org/springframework/samples/spring-petclinic-rest/3.0.2/spring-petclinic-rest-3.0.2.jar`) can be found in `pom.xml` file with name and version in adition:
+```xml
+<groupId>org.springframework.samples</groupId>
+<artifactId>spring-petclinic-rest</artifactId>
+<version>3.0.2</version>
+```
 
 <details>
 <summary>Error</summary>
@@ -167,7 +184,10 @@ Size comparison of docker images based on image used in second stage of [Backend
 
 ## Create Frontend Dockerfile and build docker image <a name="frontend"></a>
 
-[Frontend Dockerfile](../spring-petclinic-angular/Dockerfile)
+[Frontend Dockerfile](/00-spring-petclinic-deployment/spring-petclinic-angular/Dockerfile)
+
+> [!TIP]
+> When copying multiple files, it is recommended to reference destination as directory like `./` instead of just `.`. `.` represents current directory iteself, while `./` represents current directory as part of a file path.
 
 Create `default.conf` file for nginx configuration and use it in Dockerfile: 
 ```
@@ -233,9 +253,9 @@ $ docker push adinpilavdzija/petclinic-angular:1.0
 
 Pull images from Docker Hub.
 ```
-docker pull adinpilavdzija/petclinic-postgres:1.0
-docker pull adinpilavdzija/petclinic-rest:1.0
-docker pull adinpilavdzija/petclinic-angular:1.0
+$ docker pull adinpilavdzija/petclinic-postgres:1.0
+$ docker pull adinpilavdzija/petclinic-rest:1.0
+$ docker pull adinpilavdzija/petclinic-angular:1.0
 ```
 
 ## Image-building best practices

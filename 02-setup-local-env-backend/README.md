@@ -137,13 +137,13 @@ The output shows maven home location, the JDK it’s using and also the Mac OS v
 ## Running petclinic locally with maven command line
 
 ```
-git clone https://github.com/spring-petclinic/spring-petclinic-rest.git
-cd spring-petclinic-rest
-./mvnw spring-boot:run
+$ git clone https://github.com/spring-petclinic/spring-petclinic-rest.git
+$ cd spring-petclinic-rest
+$ ./mvnw spring-boot:run
 ```
 You can then access petclinic here: http://localhost:9966/petclinic/.
 
-![Swagger screenshot](https://github.com/adinpilavdzija/devops-internship-atlantbh/blob/develop/02-setup-local-env-backend/screenshot_java_maven.png)
+![Swagger screenshot](/02-setup-local-env-backend/screenshot_backend_swagger.png)
 <p align="right">
 <sub>(Swagger preview)</sub>
 </p>

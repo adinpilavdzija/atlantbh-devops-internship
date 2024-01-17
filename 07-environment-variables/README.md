@@ -1,7 +1,7 @@
 # Reconfigure Frontend and Backend apps to use environment variables
 
 ## Task
-Variables like hostname, username and password often need to be changed. Configure frontend and backend apps to use environment variables for REST_API_URL, Postgres datasource.url, username and password
+Variables like hostname, username and password often need to be changed. Configure frontend and backend apps to use environment variables for REST_API_URL, Postgres datasource.url, username and password.
 
 Fork/clone [frontend](https://github.com/spring-petclinic/spring-petclinic-angular) and [backend](https://github.com/spring-petclinic/spring-petclinic-rest) repositories and make changes (including changes in future tasks) in these repositories.
 
@@ -84,22 +84,40 @@ In our example:
 ```
 //.env
 #Environment variables for spring-petclinic-rest
-DATABASE=postgres_datasource.url
-USERNAME=my_username
-PASSWORD=my_password
+POSTGRES_JDBC_URL=postgres_datasource.url
+POSTGRES_USERNAME=my_username
+POSTGRES_PASSWORD=my_password
 ```
 
 Use environment variables in `${ENV_VARIABLE}` format:
 ```
 //application-postgresql.properties
-spring.datasource.url=${DATABASE}
-spring.datasource.username=${USERNAME}
-spring.datasource.password=${PASSWORD}
+spring.datasource.url=${POSTGRES_JDBC_URL}
+spring.datasource.username=${POSTGRES_USERNAME}
+spring.datasource.password=${POSTGRES_PASSWORD}
 ```
+
+> [!TIP]
+> Opt for **unique variable names**. While `USERNAME` might be used elsewhere, a name like `POSTGRES_USERNAME` is likely to be specific and, therefore, unique.
+
+> [!TIP]
+> Consider having a template `.env.tpl` file that lists the required environment variables without their actual values. Developers can create their local .env file based on this template.
+
+For example:
+```
+//.env.tpl
+#Environment variables for spring-petclinic-rest
+POSTGRES_JDBC_URL=
+POSTGRES_USERNAME=
+POSTGRES_PASSWORD=
+```
+
+> [!TIP]
+> The `envsubst` command performs variable replacement by searching for patterns within input data and replacing them with corresponding variable values. To use it effectively, export the necessary variables into the system environment and then execute `$ envsubst < .env.tpl > .env`.
 
 ## `.gitignore`
 
-It is necessary to add `.env` to `.gitignore` and commit change to your repository:
+Exposing `.env` files on GitHub compromises sensitive data, inviting security breaches, legal liabilities, and eroding trust. Exclude `.env` files or any sensitive data from being pushed to repositories by adding them to the `.gitignore` file. Commit that change to you repository:
 ```
 # Local configuration, environment variables file
 .env
