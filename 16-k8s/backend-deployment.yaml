@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auction-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auction-backend
+  template:
+    metadata:
+      labels:
+        app: auction-backend
+    spec:
+      containers:
+        - name: auction-backend
+          image: adinpilavdzija/auction-backend:latest
+          env:
+            - name: DB_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: auction-configmap
+                  key: DB_URL
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: auction-secret
+                  key: POSTGRES_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: auction-secret
+                  key: POSTGRES_PASSWORD
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: auction-secret
+                  key: JWT_KEY
+            - name: STRIPE_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: auction-secret
+                  key: STRIPE_SECRET_KEY
+            - name: CLIENT_HOST_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: auction-configmap
+                  key: CLIENT_HOST_URL
+            - name: GOOGLE_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: auction-secret
+                  key: GOOGLE_CLIENT_ID
+            - name: GOOGLE_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: auction-secret
+                  key: GOOGLE_CLIENT_SECRET
+          ports:
+            - containerPort: 8080

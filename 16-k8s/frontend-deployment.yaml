@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auction-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auction-frontend
+  template:
+    metadata:
+      labels:
+        app: auction-frontend
+    spec:
+      containers:
+        - name: auction-frontend
+          image: adinpilavdzija/auction-frontend:latest
+          ports:
+            - containerPort: 80

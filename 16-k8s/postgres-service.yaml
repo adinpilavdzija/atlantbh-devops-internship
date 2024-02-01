@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: auction-postgres
+spec:
+  selector:
+    app: auction-postgres
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
