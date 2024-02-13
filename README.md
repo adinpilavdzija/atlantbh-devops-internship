@@ -6,13 +6,13 @@
 
 During `ABH Internship`, interns work on a project with one-on-one mentorship from an Atlantbh engineer. The DevOps Engineer intern will work on raising the application quality as well as the development of tools and practices needed for the successful release of your application to production. By the end of the internship, the intern will be acquainted with the tools necessary for setting up and managing Continuous Integration and automated deployment processes (bash scripting/Docker/Kubernetes/GitHub Actions), as well as cloud computing infrastructure management (Amazon Web Services).
 
-The repository encompasses this main `README.md` file offering essential guidance, individual task folders with their corresponding `README.md` files and, optionally,  screenshots or other files. Each `README.md` file within the task folders provides overview and comprehensive instructions for completing the associated task. Additionally, repository includes the main application located in `00-spring-petclinic-deployment` directory.
+The repository encompasses this main `README.md` file offering essential guidance, individual task folders with their corresponding `README.md` files and, optionally,  screenshots or other files. Each `README.md` file within the task folders provides overview and comprehensive instructions for completing the associated task. Additionally, repository includes the main application located in `00-spring-petclinic-deployment` directory. Most of the diagrams in repo I've created were made entirely from scratch.
 
 <img name="devops-forthebadge" src="https://github.com/adinpilavdzija/devops-internship-atlantbh/assets/65655945/41e74e48-5c09-4a4a-9be8-3cc3f34383f8" align="right"/>
 
 > MacOS: Ventura 13.3  
 > Start date: October 9, 2023  
-> End date: 🔴
+> End date: Janunary 26, 2024
 
 <p align="left">
     <img src="https://skillicons.dev/icons?i=md,linux,bash,vim,maven,postgres,docker,githubactions,nginx,jenkins,kubernetes"/>
@@ -181,7 +181,26 @@ Task: Use any sort of provider k3d, kind, minikube. Some providers deploy traefi
 
 <details>
   <summary></summary>
-  
+
+### [14 Collaboration](/14-dev-qa-collab/)
+
+QA intern needs ability to deploy application to local environment for the purposes of testing. This application is from DEV intern.
+
+Task: 
+- `Sync` with DEV intern with details how application works
+- Setup `Dockerfiles` for FE & BE application
+- Prepare `docker-compose.yml` for easier deployment
+
+### [15 Prepare local Jenkins deployment for QA collaboration](/15-jenkins-qa-collab/)
+
+Task: Prepare local Jenkins deployment for QA collaboration
+
+### [16 Migrate docker-compose deployment to kubernetes](/16-k8s/)
+
+Migrate docker-compose deployment to kubernetes:
+- Write deployment/statefulset manifests
+- Expose applications (use localhost domain and subdomains)
+
 </details>
 
 <p align="center">
